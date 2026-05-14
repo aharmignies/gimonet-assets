@@ -1,0 +1,1 @@
+# gimonet-assets
