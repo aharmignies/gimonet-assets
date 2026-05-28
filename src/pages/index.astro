@@ -1,0 +1,213 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    icon: '🎨',
+    title: 'Peinture intérieure',
+    desc: "Murs, plafonds, boiseries. Préparation, enduit, finition mat ou satinée.",
+  },
+  {
+    icon: '🏠',
+    title: 'Peinture extérieure',
+    desc: 'Façades, volets, portails. Traitement, ravalement, protection longue durée.',
+  },
+  {
+    icon: '🪵',
+    title: 'Pose de sols',
+    desc: 'Parquet, stratifié, vinyle. Pose collée, flottante ou cliquée selon vos pièces.',
+  },
+];
+
+const advantages = [
+  { icon: '✓', title: 'Artisans certifiés', desc: 'Qualifications RGE et labels reconnus.' },
+  { icon: '€', title: 'Devis gratuit', desc: 'Visite à domicile et chiffrage détaillé sans engagement.' },
+  { icon: '★', title: '15 ans d\'expérience', desc: 'Plus de 500 chantiers réalisés en région.' },
+  { icon: '🛡', title: 'Garantie décennale', desc: 'Assurance professionnelle pour votre tranquillité.' },
+];
+---
+
+<Layout title="Hermelin Jouzeau — Peinture & Sol | Artisan peintre">
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <span class="eyebrow">Artisan peintre depuis 2010</span>
+        <h1>Donnez vie à vos murs et à vos sols</h1>
+        <p class="lead">
+          Hermelin Jouzeau accompagne particuliers et professionnels pour
+          tous travaux de peinture et de pose de sols. Devis gratuit,
+          finition impeccable, délais respectés.
+        </p>
+        <div class="hero-cta">
+          <a href="/contact" class="btn btn-primary">Demander un devis</a>
+          <a href="/realisations" class="btn btn-outline">Voir nos réalisations</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-card">
+          <img src="/assets/logo.jpg" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">Nos prestations</span>
+        <h2>Un savoir-faire complet</h2>
+        <p>De la préparation des supports à la pose finale, nous maîtrisons chaque étape.</p>
+      </div>
+      <div class="services-grid">
+        {services.map((s) => (
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">{s.icon}</div>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+            <a href="/services" class="link-more">En savoir plus →</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">Pourquoi nous choisir</span>
+        <h2>Le sérieux d'une entreprise familiale</h2>
+      </div>
+      <div class="advantages-grid">
+        {advantages.map((a) => (
+          <div class="advantage">
+            <div class="advantage-icon">{a.icon}</div>
+            <h3>{a.title}</h3>
+            <p>{a.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container cta-inner">
+      <div>
+        <h2>Un projet en tête&nbsp;?</h2>
+        <p>Parlons-en. Devis gratuit sous 48h.</p>
+      </div>
+      <a href="/contact" class="btn btn-primary">Nous contacter</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    padding: clamp(3rem, 8vw, 6rem) 0;
+    background: linear-gradient(180deg, #fff 0%, var(--color-light) 100%);
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero-text .lead {
+    font-size: 1.15rem;
+    color: var(--color-text);
+    max-width: 520px;
+    margin-bottom: 2rem;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-card {
+    width: min(360px, 100%);
+    aspect-ratio: 1;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+  }
+  .hero-card img { width: 100%; height: 100%; object-fit: contain; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    transition: all var(--transition);
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+  }
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .link-more {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+  .advantage { text-align: center; }
+  .advantage-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .advantage h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .advantage p { color: var(--color-text-light); font-size: 0.95rem; }
+
+  .cta-banner {
+    background: var(--color-dark);
+    color: #fff;
+    padding: 3rem 0;
+  }
+  .cta-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .cta-banner h2 { color: #fff; margin-bottom: 0.25rem; }
+  .cta-banner p { color: #cfcfcf; margin: 0; }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-visual { order: -1; }
+    .hero-card { width: min(280px, 100%); padding: 2rem; }
+  }
+</style>

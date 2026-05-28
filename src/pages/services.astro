@@ -1,0 +1,176 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    icon: '🎨',
+    title: 'Peinture intérieure',
+    desc: "Préparation des supports, enduit, peinture acrylique ou glycéro. Finitions mat, satin ou velours selon vos pièces.",
+  },
+  {
+    icon: '🏠',
+    title: 'Peinture extérieure',
+    desc: 'Façades, volets, portails, clôtures. Traitement préalable, peinture résistante UV et intempéries.',
+  },
+  {
+    icon: '🪵',
+    title: 'Pose de parquet',
+    desc: 'Parquet massif ou contrecollé, pose clouée, collée ou flottante. Ponçage et vitrification possible.',
+  },
+  {
+    icon: '🟫',
+    title: 'Pose de stratifié',
+    desc: 'Sols stratifiés haut de gamme, pose flottante rapide et propre. Large choix de finitions bois et imitation pierre.',
+  },
+  {
+    icon: '🟦',
+    title: 'Revêtements souples',
+    desc: 'Vinyle, lino, PVC. Idéal cuisine, salle de bain, locaux professionnels. Pose collée pour une étanchéité optimale.',
+  },
+  {
+    icon: '🎯',
+    title: 'Conseil couleur',
+    desc: 'Étude colorimétrique personnalisée, harmonisation des teintes, sélection des matériaux adaptés à votre intérieur.',
+  },
+];
+
+const steps = [
+  { num: '01', title: 'Devis gratuit', desc: 'Visite à domicile, étude précise, chiffrage détaillé sans engagement.' },
+  { num: '02', title: 'Préparation', desc: 'Protection du mobilier, préparation des supports, ponçage et enduit si nécessaire.' },
+  { num: '03', title: 'Réalisation', desc: 'Travaux par nos artisans, dans le respect des délais convenus et de votre espace de vie.' },
+  { num: '04', title: 'Livraison', desc: 'Contrôle qualité avec vous, nettoyage complet, garantie décennale activée.' },
+];
+---
+
+<Layout title="Nos services — Hermelin Jouzeau Peinture & Sol">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Nos prestations</span>
+      <h1>Tous vos travaux de peinture et de sols</h1>
+      <p class="lead">
+        Une équipe d'artisans qualifiés pour intervenir chez vous, du conseil
+        initial à la finition. Nous prenons en charge l'intégralité de votre
+        chantier.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="services-grid">
+        {services.map((s) => (
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">{s.icon}</div>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+            <a href="/contact" class="link-more">Demander un devis →</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">Notre méthode</span>
+        <h2>Un chantier en 4 étapes</h2>
+        <p>Une approche claire et professionnelle, du premier contact à la remise des clés.</p>
+      </div>
+      <ol class="timeline">
+        {steps.map((step) => (
+          <li>
+            <span class="step-num">{step.num}</span>
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container cta-inner">
+      <div>
+        <h2>Une question sur l'une de nos prestations&nbsp;?</h2>
+        <p>Nous vous répondons sous 48h.</p>
+      </div>
+      <a href="/contact" class="btn btn-primary">Nous contacter</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding: clamp(3rem, 7vw, 5rem) 0 2rem;
+    text-align: center;
+  }
+  .page-hero h1 { max-width: 800px; margin: 0 auto 1rem; }
+  .page-hero .lead {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--color-text);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    transition: all var(--transition);
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+  }
+  .service-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .link-more { display: inline-block; margin-top: 0.5rem; font-weight: 600; font-size: 0.95rem; }
+
+  .timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    counter-reset: step;
+  }
+  .timeline li {
+    position: relative;
+    padding-top: 3.5rem;
+  }
+  .step-num {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+  }
+  .timeline h3 { font-size: 1.1rem; }
+  .timeline p { color: var(--color-text-light); font-size: 0.95rem; }
+
+  .cta-banner {
+    background: var(--color-dark);
+    color: #fff;
+    padding: 3rem 0;
+  }
+  .cta-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .cta-banner h2 { color: #fff; margin-bottom: 0.25rem; }
+  .cta-banner p { color: #cfcfcf; margin: 0; }
+</style>

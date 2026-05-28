@@ -1,0 +1,208 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const milestones = [
+  { year: '2010', text: 'Création de l\'entreprise par Hermelin et Jouzeau.' },
+  { year: '2014', text: 'Spécialisation dans la pose de sols et parquets.' },
+  { year: '2018', text: 'Obtention de la qualification RGE.' },
+  { year: '2022', text: 'Équipe de 6 artisans, plus de 500 chantiers réalisés.' },
+];
+
+const values = [
+  { title: 'Qualité', desc: 'Des finitions soignées, des matériaux sélectionnés, le souci du détail.' },
+  { title: 'Confiance', desc: 'Devis transparents, respect des délais, communication claire.' },
+  { title: 'Proximité', desc: 'Une entreprise familiale ancrée localement, à votre écoute.' },
+];
+
+const team = [
+  { name: 'Hermelin', role: 'Co-fondateur — Peinture' },
+  { name: 'Jouzeau', role: 'Co-fondateur — Sols' },
+  { name: 'À renseigner', role: 'Artisan peintre' },
+  { name: 'À renseigner', role: 'Poseur de sols' },
+];
+---
+
+<Layout title="À propos — Hermelin Jouzeau Peinture & Sol">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Notre histoire</span>
+      <h1>Une entreprise familiale au service de votre intérieur</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container intro">
+      <div class="intro-image" aria-hidden="true">
+        <span class="placeholder-icon">👥</span>
+        <span class="placeholder-label">Photo de l'équipe à venir</span>
+      </div>
+      <div class="intro-text">
+        <h2>Notre histoire</h2>
+        <p>
+          Fondée en 2010 par <strong>Hermelin</strong> et <strong>Jouzeau</strong>,
+          deux artisans passionnés, notre entreprise s'est construite autour
+          d'une conviction simple&nbsp;: chaque chantier mérite la même
+          exigence, qu'il s'agisse d'un studio ou d'une grande maison.
+        </p>
+        <p>
+          Au fil des années, nous avons élargi nos compétences à la pose de
+          sols pour devenir un interlocuteur unique pour la rénovation
+          intérieure. Notre équipe d'artisans qualifiés intervient
+          aujourd'hui auprès des particuliers et des professionnels en région.
+        </p>
+        <p>
+          Notre engagement&nbsp;: un travail bien fait, un devis transparent,
+          un chantier respectueux de votre lieu de vie.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">Notre parcours</span>
+        <h2>Quelques étapes clés</h2>
+      </div>
+      <ol class="milestones">
+        {milestones.map((m) => (
+          <li>
+            <span class="year">{m.year}</span>
+            <p>{m.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">L'équipe</span>
+        <h2>Les artisans Hermelin Jouzeau</h2>
+      </div>
+      <div class="team-grid">
+        {team.map((member) => (
+          <div class="team-card">
+            <div class="team-avatar" aria-hidden="true">
+              {member.name.charAt(0)}
+            </div>
+            <h3>{member.name}</h3>
+            <p>{member.role}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">Nos valeurs</span>
+        <h2>Ce qui nous tient à cœur</h2>
+      </div>
+      <div class="values-grid">
+        {values.map((v) => (
+          <div class="value-card">
+            <h3>{v.title}</h3>
+            <p>{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero { padding: clamp(3rem, 7vw, 5rem) 0 2rem; text-align: center; }
+
+  .intro {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .intro-image {
+    aspect-ratio: 4 / 5;
+    background: linear-gradient(135deg, #f0e8df 0%, #e8dcc4 100%);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--color-text-light);
+  }
+  .placeholder-icon { font-size: 2.5rem; }
+  .placeholder-label { font-size: 0.85rem; letter-spacing: 0.05em; }
+
+  .milestones {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .milestones li {
+    background: #fff;
+    border-left: 3px solid var(--color-primary);
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius-sm);
+  }
+  .year {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+  }
+  .milestones p { color: var(--color-text); margin: 0; font-size: 0.95rem; }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+  .team-card {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: #fff;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+  }
+  .team-avatar {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  .team-card h3 { font-size: 1.05rem; margin-bottom: 0.25rem; }
+  .team-card p { color: var(--color-text-light); font-size: 0.9rem; margin: 0; }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .value-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+  }
+  .value-card h3 { color: var(--color-primary); margin-bottom: 0.75rem; }
+
+  @media (max-width: 800px) {
+    .intro { grid-template-columns: 1fr; }
+  }
+</style>
