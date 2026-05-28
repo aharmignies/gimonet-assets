@@ -1,0 +1,142 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <div class="footer-brand">
+        <img src="/assets/logo.jpg" alt="Hermelin Jouzeau" width="56" height="56" />
+        <div>
+          <strong>Hermelin Jouzeau</strong>
+          <small>Peinture &amp; Sol</small>
+        </div>
+      </div>
+      <p>
+        Artisans peintres et poseurs de sols. Travaux de peinture intérieure
+        et extérieure, pose de parquets, stratifiés et revêtements souples.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/realisations">Réalisations</a></li>
+        <li><a href="/a-propos">À propos</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul class="contact-list">
+        <li><span aria-hidden="true">📞</span> <a href="tel:+33000000000">À renseigner</a></li>
+        <li><span aria-hidden="true">✉️</span> <a href="mailto:contact@hermelin-peinture.fr">contact@hermelin-peinture.fr</a></li>
+        <li><span aria-hidden="true">📍</span> Adresse à renseigner</li>
+        <li><span aria-hidden="true">🕒</span> Lun – Ven, 8h – 18h</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <small>© {year} Hermelin Jouzeau Peinture &amp; Sol. Tous droits réservés.</small>
+      <ul class="legal">
+        <li><a href="/mentions-legales">Mentions légales</a></li>
+        <li><a href="/confidentialite">Confidentialité</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-dark);
+    color: #cfcfcf;
+    margin-top: 4rem;
+  }
+  .footer h4 {
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+  .footer a { color: #cfcfcf; }
+  .footer a:hover { color: #fff; }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.3fr;
+    gap: 3rem;
+    padding: 4rem 1.5rem 3rem;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  .footer-brand img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: var(--radius-sm);
+    padding: 4px;
+  }
+  .footer-brand strong {
+    display: block;
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+  }
+  .footer-brand small {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary-light);
+  }
+  .footer-col p { color: #9c9c9c; margin-top: 1rem; }
+
+  .footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #2c2c2c;
+    background: #111;
+  }
+  .footer-bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .legal {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .legal a { font-size: 0.85rem; }
+
+  @media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem 2rem; }
+    .footer-bottom-inner { flex-direction: column; text-align: center; }
+  }
+</style>

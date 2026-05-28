@@ -1,0 +1,155 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  { title: 'Rénovation salon — Annecy', cat: 'peinture', placeholder: 'Salon refait à neuf, peinture mate haut de gamme.' },
+  { title: 'Parquet chêne — Chambéry', cat: 'sols', placeholder: 'Pose d\'un parquet massif chêne sur 80 m².' },
+  { title: 'Façade maison — Aix-les-Bains', cat: 'peinture', placeholder: 'Ravalement complet et peinture extérieure.' },
+  { title: 'Stratifié appartement — Grenoble', cat: 'sols', placeholder: 'Pose de stratifié dans un T3 complet.' },
+  { title: 'Cage d\'escalier — Lyon', cat: 'peinture', placeholder: 'Peinture intérieure et boiseries d\'une cage d\'escalier.' },
+  { title: 'Vinyle salle de bain — Annecy', cat: 'sols', placeholder: 'Pose d\'un revêtement vinyle hydrofuge.' },
+];
+---
+
+<Layout title="Réalisations — Hermelin Jouzeau Peinture & Sol">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Notre travail</span>
+      <h1>Quelques-unes de nos réalisations</h1>
+      <p class="lead">
+        Un aperçu de nos chantiers récents. Pour découvrir l'intégralité de
+        nos références ou voir un projet similaire au vôtre, contactez-nous.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="filters" role="tablist">
+        <button class="filter active" data-filter="all" role="tab" aria-selected="true">Tous</button>
+        <button class="filter" data-filter="peinture" role="tab" aria-selected="false">Peinture</button>
+        <button class="filter" data-filter="sols" role="tab" aria-selected="false">Sols</button>
+      </div>
+
+      <div class="gallery">
+        {projects.map((p) => (
+          <figure class="project" data-cat={p.cat}>
+            <div class="project-image" role="img" aria-label={p.title}>
+              <span class="placeholder-icon" aria-hidden="true">📷</span>
+              <span class="placeholder-label">Photo à venir</span>
+            </div>
+            <figcaption>
+              <h3>{p.title}</h3>
+              <p>{p.placeholder}</p>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container cta-inner">
+      <div>
+        <h2>Votre projet sera notre prochaine référence</h2>
+        <p>Parlons-en. Devis gratuit sous 48h.</p>
+      </div>
+      <a href="/contact" class="btn btn-primary">Demander un devis</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero { padding: clamp(3rem, 7vw, 5rem) 0 2rem; text-align: center; }
+  .page-hero h1 { max-width: 800px; margin: 0 auto 1rem; }
+  .page-hero .lead { max-width: 700px; margin: 0 auto; font-size: 1.1rem; }
+
+  .filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .filter {
+    padding: 0.5rem 1.25rem;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    color: var(--color-text);
+    font-weight: 500;
+    transition: all var(--transition);
+  }
+  .filter:hover { border-color: var(--color-primary); color: var(--color-primary); }
+  .filter.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .project {
+    margin: 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    transition: all var(--transition);
+  }
+  .project:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  .project.hidden { display: none; }
+
+  .project-image {
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, #f0e8df 0%, #e8dcc4 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--color-text-light);
+  }
+  .placeholder-icon { font-size: 2rem; }
+  .placeholder-label { font-size: 0.85rem; letter-spacing: 0.05em; }
+
+  figcaption { padding: 1.25rem 1.5rem 1.5rem; }
+  figcaption h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+  figcaption p { color: var(--color-text-light); font-size: 0.9rem; margin: 0; }
+
+  .cta-banner { background: var(--color-dark); color: #fff; padding: 3rem 0; }
+  .cta-inner {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 2rem; flex-wrap: wrap;
+  }
+  .cta-banner h2 { color: #fff; margin-bottom: 0.25rem; }
+  .cta-banner p { color: #cfcfcf; margin: 0; }
+</style>
+
+<script>
+  const filters = document.querySelectorAll<HTMLButtonElement>('.filter');
+  const projects = document.querySelectorAll<HTMLElement>('.project');
+
+  filters.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filters.forEach((b) => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      const target = btn.dataset.filter;
+      projects.forEach((p) => {
+        const show = target === 'all' || p.dataset.cat === target;
+        p.classList.toggle('hidden', !show);
+      });
+    });
+  });
+</script>

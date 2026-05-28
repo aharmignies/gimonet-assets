@@ -1,0 +1,261 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact — Hermelin Jouzeau Peinture & Sol">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Parlons de votre projet</span>
+      <h1>Contactez-nous</h1>
+      <p class="lead">
+        Devis gratuit, réponse sous 48h. Décrivez-nous votre projet, nous
+        revenons vers vous rapidement.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <form id="contact-form" class="contact-form" method="POST" action="/contact.php" novalidate>
+        <div class="field">
+          <label for="name">Nom complet *</label>
+          <input type="text" id="name" name="name" required minlength="2" maxlength="100" autocomplete="name" />
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="phone">Téléphone</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="project">Type de projet *</label>
+          <select id="project" name="project" required>
+            <option value="">— Sélectionnez —</option>
+            <option value="peinture-interieure">Peinture intérieure</option>
+            <option value="peinture-exterieure">Peinture extérieure</option>
+            <option value="pose-parquet">Pose de parquet</option>
+            <option value="pose-stratifie">Pose de stratifié</option>
+            <option value="revetements-souples">Revêtements souples</option>
+            <option value="autre">Autre / Plusieurs prestations</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Votre message *</label>
+          <textarea id="message" name="message" rows="6" required minlength="10" maxlength="5000"></textarea>
+        </div>
+
+        <div class="field-checkbox">
+          <input type="checkbox" id="rgpd" name="rgpd" required />
+          <label for="rgpd">
+            J'accepte que mes données soient utilisées pour me recontacter.
+            Voir notre <a href="/confidentialite">politique de confidentialité</a>. *
+          </label>
+        </div>
+
+        <input type="text" name="website" tabindex="-1" autocomplete="off" class="honeypot" aria-hidden="true" />
+
+        <button type="submit" class="btn btn-primary" id="submit-btn">Envoyer le message</button>
+
+        <div id="form-feedback" class="form-feedback" role="status" aria-live="polite"></div>
+      </form>
+
+      <aside class="contact-info">
+        <h2>Nos coordonnées</h2>
+        <ul>
+          <li>
+            <strong>Téléphone</strong>
+            <a href="tel:+33000000000">À renseigner</a>
+          </li>
+          <li>
+            <strong>Email</strong>
+            <a href="mailto:contact@hermelin-peinture.fr">contact@hermelin-peinture.fr</a>
+          </li>
+          <li>
+            <strong>Adresse</strong>
+            <span>Adresse à renseigner</span>
+          </li>
+          <li>
+            <strong>Horaires</strong>
+            <span>Lundi – Vendredi, 8h – 18h</span>
+          </li>
+        </ul>
+
+        <div class="map-placeholder" aria-hidden="true">
+          <span>📍 Carte à intégrer</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero { padding: clamp(3rem, 7vw, 5rem) 0 2rem; text-align: center; }
+  .page-hero .lead { max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .contact-form {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .field label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-dark);
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font: inherit;
+    color: var(--color-dark);
+    background: var(--color-light);
+    transition: border-color var(--transition), box-shadow var(--transition);
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(139, 26, 26, 0.12);
+  }
+  .field textarea { resize: vertical; min-height: 120px; }
+
+  .field-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+  .field-checkbox input { margin-top: 0.25rem; }
+  .field-checkbox label { font-size: 0.9rem; color: var(--color-text); }
+
+  .honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+
+  #submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .form-feedback {
+    min-height: 1.5em;
+    font-size: 0.95rem;
+  }
+  .form-feedback.success { color: #1f7a4a; }
+  .form-feedback.error { color: var(--color-primary); }
+
+  .contact-info {
+    background: var(--color-dark);
+    color: #fff;
+    padding: 2.5rem;
+    border-radius: var(--radius-md);
+  }
+  .contact-info h2 { color: #fff; font-size: 1.5rem; margin-bottom: 1.5rem; }
+  .contact-info ul {
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .contact-info strong {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary-light);
+    margin-bottom: 0.3rem;
+  }
+  .contact-info a, .contact-info span { color: #fff; }
+
+  .map-placeholder {
+    aspect-ratio: 16 / 10;
+    background: #2a2a2a;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9c9c9c;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .field-row { grid-template-columns: 1fr; }
+    .contact-form { padding: 1.75rem; }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const feedback = document.getElementById('form-feedback');
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!feedback || !submitBtn) return;
+    feedback.className = 'form-feedback';
+    feedback.textContent = '';
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    const originalLabel = submitBtn.textContent;
+    submitBtn.textContent = 'Envoi en cours…';
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch(form.action, { method: 'POST', body: data });
+      const json = await res.json().catch(() => ({ success: false, error: 'Réponse invalide.' }));
+
+      if (res.ok && json.success) {
+        feedback.classList.add('success');
+        feedback.textContent = 'Message envoyé. Nous revenons vers vous sous 48h.';
+        form.reset();
+      } else {
+        feedback.classList.add('error');
+        feedback.textContent = json.error || "Une erreur s'est produite. Merci de réessayer.";
+      }
+    } catch {
+      feedback.classList.add('error');
+      feedback.textContent = 'Impossible d\'envoyer le message. Vérifiez votre connexion.';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+    }
+  });
+</script>
