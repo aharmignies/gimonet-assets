@@ -1,91 +1,116 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const milestones = [
-  { year: '2010', text: 'Création de l\'entreprise par Hermelin et Jouzeau.' },
-  { year: '2014', text: 'Spécialisation dans la pose de sols et parquets.' },
-  { year: '2018', text: 'Obtention de la qualification RGE.' },
-  { year: '2022', text: 'Équipe de 6 artisans, plus de 500 chantiers réalisés.' },
+const engagements = [
+  { icon: 'star', title: 'Excellence', desc: "La quête de la perfection à chaque étape, du devis à la finition finale." },
+  { icon: 'history_edu', title: 'Tradition', desc: 'Un héritage transmis sur trois générations d\'artisans peintres et poseurs de sols.' },
+  { icon: 'handshake', title: 'Engagement', desc: 'Une relation de confiance avec chaque client, basée sur la transparence et le respect.' },
 ];
 
-const values = [
-  { title: 'Qualité', desc: 'Des finitions soignées, des matériaux sélectionnés, le souci du détail.' },
-  { title: 'Confiance', desc: 'Devis transparents, respect des délais, communication claire.' },
-  { title: 'Proximité', desc: 'Une entreprise familiale ancrée localement, à votre écoute.' },
+const milestones = [
+  { year: '1923', title: 'Fondation des Ateliers Jouzeau', desc: 'Création de l\'atelier originel à Vineuil, dédié à la peinture décorative et au badigeon traditionnel.' },
+  { year: '1957', title: 'Le Leader Régional', desc: 'Reconnaissance du savoir-faire familial sur la région nantaise, expansion vers le second œuvre.' },
+  { year: '2020', title: 'Une Nouvelle Vision', desc: 'Spécialisation dans la pose de sols haut de gamme et obtention de la qualification RGE.' },
+  { year: '2024', title: "Naissance d'Hermelin Jouzeau", desc: 'Réunion de deux familles d\'artisans pour conjuguer expertise peinture et expertise sol.' },
 ];
 
 const team = [
-  { name: 'Hermelin', role: 'Co-fondateur — Peinture' },
-  { name: 'Jouzeau', role: 'Co-fondateur — Sols' },
-  { name: 'À renseigner', role: 'Artisan peintre' },
-  { name: 'À renseigner', role: 'Poseur de sols' },
+  { name: 'Marc Hermelin', role: 'Directeur Technique' },
+  { name: 'Sophie Jouzeau', role: 'Responsable Design & Sols' },
+  { name: 'Pierre Legrand', role: 'Maître Peintre' },
+  { name: 'Lucas Moreau', role: 'Expert Revêtements Sols' },
 ];
 ---
 
 <Layout title="À propos — Hermelin Jouzeau Peinture & Sol">
-  <section class="page-hero">
-    <div class="container">
-      <span class="eyebrow">Notre histoire</span>
-      <h1>Une entreprise familiale au service de votre intérieur</h1>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container intro">
-      <div class="intro-image" aria-hidden="true">
-        <span class="placeholder-icon">👥</span>
-        <span class="placeholder-label">Photo de l'équipe à venir</span>
+  <!-- Hero split avec badge -->
+  <section class="about-hero">
+    <div class="container hero-grid">
+      <div class="hero-image" aria-hidden="true">
+        <div class="hero-image-inner">
+          <span class="material-symbols-outlined">groups</span>
+          <span class="hero-image-label">Photo équipe à intégrer</span>
+        </div>
+        <div class="hero-badge">
+          <strong>35+</strong>
+          <span>Années d'expertise<br/>artisanale en région</span>
+        </div>
       </div>
-      <div class="intro-text">
-        <h2>Notre histoire</h2>
+      <div class="hero-text">
+        <span class="eyebrow">Notre Histoire</span>
+        <h1>L'Art de la Finition, une Tradition Familiale</h1>
         <p>
-          Fondée en 2010 par <strong>Hermelin</strong> et <strong>Jouzeau</strong>,
-          deux artisans passionnés, notre entreprise s'est construite autour
-          d'une conviction simple&nbsp;: chaque chantier mérite la même
-          exigence, qu'il s'agisse d'un studio ou d'une grande maison.
+          Héritière d'une double lignée d'excellence, l'entreprise
+          Hermelin Jouzeau perpétue depuis 1923 un savoir-faire qui place
+          la main de l'artisan au cœur du métier.
         </p>
         <p>
-          Au fil des années, nous avons élargi nos compétences à la pose de
-          sols pour devenir un interlocuteur unique pour la rénovation
-          intérieure. Notre équipe d'artisans qualifiés intervient
-          aujourd'hui auprès des particuliers et des professionnels en région.
+          Porteurs de l'« Intelligence de la Main », nous transmettons
+          de génération en génération une exigence intacte : celle d'un
+          travail qui se voit, se ressent et traverse le temps.
         </p>
-        <p>
-          Notre engagement&nbsp;: un travail bien fait, un devis transparent,
-          un chantier respectueux de votre lieu de vie.
-        </p>
+        <p class="signature">— Hermelin &amp; Jouzeau</p>
       </div>
     </div>
   </section>
 
+  <!-- Nos engagements -->
   <section class="section section-alt">
     <div class="container">
       <div class="section-title">
-        <span class="eyebrow">Notre parcours</span>
-        <h2>Quelques étapes clés</h2>
+        <span class="eyebrow">Nos Engagements</span>
+        <h2>Ce qui nous tient à cœur</h2>
       </div>
-      <ol class="milestones">
-        {milestones.map((m) => (
-          <li>
-            <span class="year">{m.year}</span>
-            <p>{m.text}</p>
+      <div class="engagements-grid">
+        {engagements.map((e) => (
+          <div class="engagement-card">
+            <div class="engagement-icon">
+              <span class="material-symbols-outlined">{e.icon}</span>
+            </div>
+            <h3>{e.title}</h3>
+            <p>{e.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Jalons historiques -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">Jalons Historiques</span>
+        <h2>Un siècle de savoir-faire</h2>
+      </div>
+      <ol class="timeline">
+        {milestones.map((m, i) => (
+          <li class={`timeline-item ${i % 2 === 0 ? 'left' : 'right'}`}>
+            <div class="timeline-visual" aria-hidden="true">
+              <span class="material-symbols-outlined">photo</span>
+            </div>
+            <div class="timeline-text">
+              <span class="timeline-year">{m.year}</span>
+              <h3>{m.title}</h3>
+              <p>{m.desc}</p>
+            </div>
           </li>
         ))}
       </ol>
     </div>
   </section>
 
-  <section class="section">
+  <!-- L'équipe -->
+  <section class="section section-beige">
     <div class="container">
       <div class="section-title">
-        <span class="eyebrow">L'équipe</span>
-        <h2>Les artisans Hermelin Jouzeau</h2>
+        <span class="eyebrow">L'Équipe</span>
+        <h2>Ceux qui façonnent vos espaces</h2>
       </div>
       <div class="team-grid">
         {team.map((member) => (
           <div class="team-card">
             <div class="team-avatar" aria-hidden="true">
-              {member.name.charAt(0)}
+              {member.name.split(' ').map(s => s.charAt(0)).join('')}
             </div>
             <h3>{member.name}</h3>
             <p>{member.role}</p>
@@ -95,114 +120,221 @@ const team = [
     </div>
   </section>
 
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-title">
-        <span class="eyebrow">Nos valeurs</span>
-        <h2>Ce qui nous tient à cœur</h2>
-      </div>
-      <div class="values-grid">
-        {values.map((v) => (
-          <div class="value-card">
-            <h3>{v.title}</h3>
-            <p>{v.desc}</p>
-          </div>
-        ))}
+  <!-- CTA banner -->
+  <section class="cta-banner">
+    <div class="container cta-inner">
+      <h2>Prêt à transformer votre intérieur ?</h2>
+      <p>
+        Rencontrez nos experts pour une étude personnalisée de votre
+        projet de peinture ou de sol.
+      </p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-primary">Prendre rendez-vous</a>
+        <a href="/realisations" class="btn btn-outline">Nos réalisations</a>
       </div>
     </div>
   </section>
 </Layout>
 
 <style>
-  .page-hero { padding: clamp(3rem, 7vw, 5rem) 0 2rem; text-align: center; }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    line-height: 1;
+  }
 
-  .intro {
+  /* Hero split */
+  .about-hero {
+    padding: clamp(3rem, 7vw, 5rem) 0;
+  }
+  .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 3rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
     align-items: center;
   }
-  .intro-image {
+  .hero-image {
+    position: relative;
     aspect-ratio: 4 / 5;
-    background: linear-gradient(135deg, #f0e8df 0%, #e8dcc4 100%);
-    border-radius: var(--radius-lg);
+    background: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-image-inner {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
     color: var(--color-text-light);
   }
-  .placeholder-icon { font-size: 2.5rem; }
-  .placeholder-label { font-size: 0.85rem; letter-spacing: 0.05em; }
+  .hero-image-inner .material-symbols-outlined {
+    font-size: 3.5rem;
+    color: var(--color-primary);
+    opacity: 0.6;
+  }
+  .hero-image-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
+  .hero-badge {
+    position: absolute;
+    bottom: -1rem;
+    right: -1rem;
+    background: var(--color-dark);
+    color: #fff;
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: var(--shadow-ambient);
+  }
+  .hero-badge strong {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-primary-light);
+    line-height: 1;
+  }
+  .hero-badge span {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    color: #cfcfcf;
+  }
+  .hero-text .eyebrow { color: var(--color-primary); }
+  .hero-text p { color: var(--color-text); line-height: 1.7; }
+  .signature {
+    font-family: var(--font-heading);
+    font-style: italic;
+    color: var(--color-text-light);
+    margin-top: 1.5rem;
+  }
 
-  .milestones {
+  /* Engagements */
+  .engagements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .engagement-card {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-light);
+    text-align: center;
+  }
+  .engagement-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.25rem;
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .engagement-icon .material-symbols-outlined {
+    font-size: 1.75rem !important;
+  }
+
+  /* Timeline alternée */
+  .timeline {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .timeline-item.right { direction: rtl; }
+  .timeline-item.right > * { direction: ltr; }
+
+  .timeline-visual {
+    aspect-ratio: 16 / 10;
+    background: var(--color-accent);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-light);
+  }
+  .timeline-visual .material-symbols-outlined {
+    font-size: 2.5rem !important;
+    color: var(--color-primary);
+    opacity: 0.5;
+  }
+  .timeline-year {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    opacity: 0.85;
+  }
+  .timeline-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .timeline-text p {
+    color: var(--color-text);
+    max-width: 480px;
+  }
+
+  /* Équipe */
+  .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.5rem;
   }
-  .milestones li {
-    background: #fff;
-    border-left: 3px solid var(--color-primary);
-    padding: 1.25rem 1.5rem;
-    border-radius: var(--radius-sm);
-  }
-  .year {
-    display: block;
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin-bottom: 0.25rem;
-  }
-  .milestones p { color: var(--color-text); margin: 0; font-size: 0.95rem; }
-
-  .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.5rem;
-  }
   .team-card {
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 2.25rem 1.25rem;
     background: #fff;
     border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-light);
   }
   .team-avatar {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 1rem;
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 1.25rem;
     border-radius: 50%;
-    background: var(--color-primary);
+    background: var(--color-dark);
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-heading);
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 700;
+    letter-spacing: -0.02em;
   }
-  .team-card h3 { font-size: 1.05rem; margin-bottom: 0.25rem; }
-  .team-card p { color: var(--color-text-light); font-size: 0.9rem; margin: 0; }
+  .team-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.25rem;
+  }
+  .team-card p {
+    color: var(--color-text-light);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    margin: 0;
+  }
 
-  .values-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
-  }
-  .value-card {
-    background: #fff;
-    padding: 2rem;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
-  }
-  .value-card h3 { color: var(--color-primary); margin-bottom: 0.75rem; }
-
-  @media (max-width: 800px) {
-    .intro { grid-template-columns: 1fr; }
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-image { max-width: 480px; margin: 0 auto; }
+    .timeline-item {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .timeline-item.right { direction: ltr; }
+    .timeline-visual { max-height: 280px; }
   }
 </style>

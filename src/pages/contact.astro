@@ -3,101 +3,136 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Contact — Hermelin Jouzeau Peinture & Sol">
-  <section class="page-hero">
+  <section class="contact-section">
     <div class="container">
-      <span class="eyebrow">Parlons de votre projet</span>
-      <h1>Contactez-nous</h1>
-      <p class="lead">
-        Devis gratuit, réponse sous 48h. Décrivez-nous votre projet, nous
-        revenons vers vous rapidement.
-      </p>
-    </div>
-  </section>
+      <div class="contact-header">
+        <h1>Contactez-nous</h1>
+        <p class="lead">
+          Un projet de rénovation, de peinture ou de revêtement de sol ?
+          Notre équipe d'artisans est à votre écoute pour concrétiser
+          vos envies.
+        </p>
+      </div>
 
-  <section class="section">
-    <div class="container contact-grid">
-      <form id="contact-form" class="contact-form" method="POST" action="/contact.php" novalidate>
-        <div class="field">
-          <label for="name">Nom complet *</label>
-          <input type="text" id="name" name="name" required minlength="2" maxlength="100" autocomplete="name" />
-        </div>
-
-        <div class="field-row">
-          <div class="field">
-            <label for="email">Email *</label>
-            <input type="email" id="email" name="email" required autocomplete="email" />
+      <div class="contact-grid">
+        <!-- FORMULAIRE -->
+        <form id="contact-form" class="contact-form" method="POST" action="/contact.php" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Nom complet *</label>
+              <input type="text" id="name" name="name" required minlength="2" maxlength="100" placeholder="Jean Dupont" autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required placeholder="jean.dupont@exemple.com" autocomplete="email" />
+            </div>
           </div>
-          <div class="field">
-            <label for="phone">Téléphone</label>
-            <input type="tel" id="phone" name="phone" autocomplete="tel" />
+
+          <div class="field-row">
+            <div class="field">
+              <label for="phone">Téléphone</label>
+              <input type="tel" id="phone" name="phone" placeholder="06 00 00 00 00" autocomplete="tel" />
+            </div>
+            <div class="field">
+              <label for="project">Type de projet *</label>
+              <select id="project" name="project" required>
+                <option value="">— Sélectionnez —</option>
+                <option value="peinture-interieure">Peinture intérieure</option>
+                <option value="peinture-exterieure">Peinture extérieure</option>
+                <option value="revetement-sol">Revêtement de sol</option>
+                <option value="renovation-complete">Rénovation complète</option>
+                <option value="decoration-murale">Décoration murale</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
           </div>
-        </div>
 
-        <div class="field">
-          <label for="project">Type de projet *</label>
-          <select id="project" name="project" required>
-            <option value="">— Sélectionnez —</option>
-            <option value="peinture-interieure">Peinture intérieure</option>
-            <option value="peinture-exterieure">Peinture extérieure</option>
-            <option value="pose-parquet">Pose de parquet</option>
-            <option value="pose-stratifie">Pose de stratifié</option>
-            <option value="revetements-souples">Revêtements souples</option>
-            <option value="autre">Autre / Plusieurs prestations</option>
-          </select>
-        </div>
+          <div class="field">
+            <label for="message">Votre message *</label>
+            <textarea id="message" name="message" rows="5" required minlength="10" maxlength="5000" placeholder="Décrivez brièvement votre projet…"></textarea>
+          </div>
 
-        <div class="field">
-          <label for="message">Votre message *</label>
-          <textarea id="message" name="message" rows="6" required minlength="10" maxlength="5000"></textarea>
-        </div>
+          <div class="field-checkbox">
+            <input type="checkbox" id="rgpd" name="rgpd" required />
+            <label for="rgpd">
+              J'accepte que mes données soient traitées pour répondre à ma
+              demande de devis conformément à la
+              <a href="/confidentialite">politique de confidentialité</a>. *
+            </label>
+          </div>
 
-        <div class="field-checkbox">
-          <input type="checkbox" id="rgpd" name="rgpd" required />
-          <label for="rgpd">
-            J'accepte que mes données soient utilisées pour me recontacter.
-            Voir notre <a href="/confidentialite">politique de confidentialité</a>. *
-          </label>
-        </div>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" class="honeypot" aria-hidden="true" />
 
-        <input type="text" name="website" tabindex="-1" autocomplete="off" class="honeypot" aria-hidden="true" />
+          <button type="submit" class="btn btn-primary" id="submit-btn">Envoyer le message</button>
 
-        <button type="submit" class="btn btn-primary" id="submit-btn">Envoyer le message</button>
+          <div id="form-feedback" class="form-feedback" role="status" aria-live="polite"></div>
+        </form>
 
-        <div id="form-feedback" class="form-feedback" role="status" aria-live="polite"></div>
-      </form>
+        <!-- INFOS LATÉRALES -->
+        <aside class="contact-info">
+          <div class="info-card">
+            <div class="info-icon">
+              <span class="material-symbols-outlined">location_on</span>
+            </div>
+            <div>
+              <h3>Notre Atelier</h3>
+              <p>1, Rue de l'Artisanat<br/>44000 Nantes, France</p>
+            </div>
+          </div>
 
-      <aside class="contact-info">
-        <h2>Nos coordonnées</h2>
-        <ul>
-          <li>
-            <strong>Téléphone</strong>
-            <a href="tel:+33000000000">À renseigner</a>
-          </li>
-          <li>
-            <strong>Email</strong>
-            <a href="mailto:contact@hermelin-peinture.fr">contact@hermelin-peinture.fr</a>
-          </li>
-          <li>
-            <strong>Adresse</strong>
-            <span>Adresse à renseigner</span>
-          </li>
-          <li>
-            <strong>Horaires</strong>
-            <span>Lundi – Vendredi, 8h – 18h</span>
-          </li>
-        </ul>
+          <div class="info-card">
+            <div class="info-icon">
+              <span class="material-symbols-outlined">call</span>
+            </div>
+            <div>
+              <h3>Contact Direct</h3>
+              <p>
+                Téléphone : <a href="tel:+33240000000">02 40 XX XX XX</a><br/>
+                Email : <a href="mailto:contact@hermelin-peinture.fr">contact@hermelin-peinture.fr</a>
+              </p>
+            </div>
+          </div>
 
-        <div class="map-placeholder" aria-hidden="true">
-          <span>📍 Carte à intégrer</span>
-        </div>
-      </aside>
+          <div class="info-card">
+            <div class="info-icon">
+              <span class="material-symbols-outlined">schedule</span>
+            </div>
+            <div>
+              <h3>Horaires d'Ouverture</h3>
+              <p>
+                Lun – Ven : 08:30 — 18:30<br/>
+                Samedi : sur rendez-vous
+              </p>
+            </div>
+          </div>
+
+          <div class="map-placeholder" aria-hidden="true">
+            <span class="material-symbols-outlined">map</span>
+            <strong>Plan d'accès interactif</strong>
+            <span class="map-hint">Cliquez pour voir sur Google Maps</span>
+          </div>
+        </aside>
+      </div>
     </div>
   </section>
 </Layout>
 
 <style>
-  .page-hero { padding: clamp(3rem, 7vw, 5rem) 0 2rem; text-align: center; }
-  .page-hero .lead { max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    line-height: 1;
+  }
+
+  .contact-section {
+    padding: clamp(3rem, 7vw, 5rem) 0 clamp(4rem, 8vw, 6rem);
+    background: var(--color-surface);
+  }
+  .contact-header {
+    text-align: left;
+    max-width: 720px;
+    margin-bottom: 3rem;
+  }
+  .contact-header h1 { margin-bottom: 1rem; }
 
   .contact-grid {
     display: grid;
@@ -106,53 +141,76 @@ import Layout from '../layouts/Layout.astro';
     align-items: start;
   }
 
+  /* Formulaire — inputs underlined (style Stitch) */
   .contact-form {
     background: #fff;
     padding: 2.5rem;
     border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-light);
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.5rem;
   }
   .field { display: flex; flex-direction: column; gap: 0.4rem; }
   .field-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: 1.25rem;
   }
   .field label {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--color-dark);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-light);
   }
   .field input,
   .field select,
   .field textarea {
-    padding: 0.75rem 0.9rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
+    padding: 0.65rem 0;
+    border: 0;
+    border-bottom: 1px solid var(--color-border);
+    border-radius: 0;
     font: inherit;
     color: var(--color-dark);
-    background: var(--color-light);
-    transition: border-color var(--transition), box-shadow var(--transition);
+    background: transparent;
+    transition: border-color var(--transition);
   }
   .field input:focus,
   .field select:focus,
   .field textarea:focus {
     outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(139, 26, 26, 0.12);
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: calc(0.65rem - 1px);
   }
-  .field textarea { resize: vertical; min-height: 120px; }
+  .field textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  .field select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%234a4a4a' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 10px;
+    padding-right: 1.5rem;
+  }
 
   .field-checkbox {
     display: flex;
     align-items: flex-start;
-    gap: 0.6rem;
+    gap: 0.65rem;
+    padding-top: 0.5rem;
   }
-  .field-checkbox input { margin-top: 0.25rem; }
-  .field-checkbox label { font-size: 0.9rem; color: var(--color-text); }
+  .field-checkbox input { margin-top: 0.2rem; accent-color: var(--color-primary); }
+  .field-checkbox label {
+    font-size: 0.85rem;
+    color: var(--color-text);
+    letter-spacing: 0;
+    text-transform: none;
+    line-height: 1.5;
+  }
 
   .honeypot {
     position: absolute;
@@ -162,10 +220,8 @@ import Layout from '../layouts/Layout.astro';
     opacity: 0;
   }
 
-  #submit-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
+  #submit-btn { align-self: flex-start; margin-top: 0.5rem; }
+  #submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
   .form-feedback {
     min-height: 1.5em;
@@ -174,41 +230,73 @@ import Layout from '../layouts/Layout.astro';
   .form-feedback.success { color: #1f7a4a; }
   .form-feedback.error { color: var(--color-primary); }
 
+  /* Infos latérales — info cards */
   .contact-info {
-    background: var(--color-dark);
-    color: #fff;
-    padding: 2.5rem;
-    border-radius: var(--radius-md);
-  }
-  .contact-info h2 { color: #fff; font-size: 1.5rem; margin-bottom: 1.5rem; }
-  .contact-info ul {
-    list-style: none;
-    margin: 0 0 1.5rem;
-    padding: 0;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
   }
-  .contact-info strong {
-    display: block;
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-primary-light);
-    margin-bottom: 0.3rem;
+  .info-card {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.25rem;
+    background: #fff;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-light);
   }
-  .contact-info a, .contact-info span { color: #fff; }
-
-  .map-placeholder {
-    aspect-ratio: 16 / 10;
-    background: #2a2a2a;
+  .info-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
     border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #9c9c9c;
-    font-size: 0.95rem;
+    flex-shrink: 0;
   }
+  .info-icon .material-symbols-outlined {
+    font-size: 1.25rem !important;
+  }
+  .info-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+  }
+  .info-card p {
+    color: var(--color-text);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .info-card a { color: var(--color-text); }
+  .info-card a:hover { color: var(--color-primary); }
+
+  .map-placeholder {
+    aspect-ratio: 4 / 3;
+    background: var(--color-surface-low);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    color: var(--color-text-light);
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .map-placeholder .material-symbols-outlined {
+    font-size: 2rem !important;
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+  }
+  .map-placeholder strong {
+    color: var(--color-dark);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+  }
+  .map-hint { font-size: 0.85rem; }
 
   @media (max-width: 900px) {
     .contact-grid { grid-template-columns: 1fr; }
@@ -252,7 +340,7 @@ import Layout from '../layouts/Layout.astro';
       }
     } catch {
       feedback.classList.add('error');
-      feedback.textContent = 'Impossible d\'envoyer le message. Vérifiez votre connexion.';
+      feedback.textContent = "Impossible d'envoyer le message. Vérifiez votre connexion.";
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = originalLabel;

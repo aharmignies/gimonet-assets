@@ -2,66 +2,74 @@
 import Layout from '../layouts/Layout.astro';
 
 const services = [
-  {
-    icon: '🎨',
-    title: 'Peinture intérieure',
-    desc: "Murs, plafonds, boiseries. Préparation, enduit, finition mat ou satinée.",
-  },
-  {
-    icon: '🏠',
-    title: 'Peinture extérieure',
-    desc: 'Façades, volets, portails. Traitement, ravalement, protection longue durée.',
-  },
-  {
-    icon: '🪵',
-    title: 'Pose de sols',
-    desc: 'Parquet, stratifié, vinyle. Pose collée, flottante ou cliquée selon vos pièces.',
-  },
+  { icon: 'format_paint', title: 'Peinture intérieure', desc: 'Murs, plafonds, boiseries. Finitions mates ou satinées.' },
+  { icon: 'home_work', title: 'Peinture extérieure', desc: 'Façades, volets, portails. Protection longue durée.' },
+  { icon: 'grid_view', title: 'Pose de sols', desc: 'Parquet, stratifié, vinyle. Travail soigné.' },
 ];
 
 const advantages = [
-  { icon: '✓', title: 'Artisans certifiés', desc: 'Qualifications RGE et labels reconnus.' },
-  { icon: '€', title: 'Devis gratuit', desc: 'Visite à domicile et chiffrage détaillé sans engagement.' },
-  { icon: '★', title: '15 ans d\'expérience', desc: 'Plus de 500 chantiers réalisés en région.' },
-  { icon: '🛡', title: 'Garantie décennale', desc: 'Assurance professionnelle pour votre tranquillité.' },
+  { icon: 'verified', title: 'Artisans certifiés', desc: 'Qualité garantie' },
+  { icon: 'request_quote', title: 'Devis gratuit', desc: 'Étude personnalisée' },
+  { icon: 'history', title: '15 ans d\'expérience', desc: 'Savoir-faire familial' },
+  { icon: 'security', title: 'Garantie décennale', desc: 'Votre sérénité' },
+];
+
+const testimonials = [
+  {
+    text: "Une équipe professionnelle qui a su rénover notre salon avec finesse. Le résultat est à la hauteur de nos attentes.",
+    author: 'Marc A.',
+    city: 'Nantes',
+  },
+  {
+    text: "Conseils avisés sur le choix des couleurs et pose impeccable du parquet. Je recommande sans hésitation.",
+    author: 'Sophie L.',
+    city: 'Rezé',
+  },
+  {
+    text: "Devis clair, délais tenus, finition irréprochable. Une entreprise familiale comme on en fait peu.",
+    author: 'Jean-Pierre D.',
+    city: 'Carquefou',
+  },
 ];
 ---
 
 <Layout title="Hermelin Jouzeau — Peinture & Sol | Artisan peintre">
+  <!-- Hero éditorial -->
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-text">
-        <span class="eyebrow">Artisan peintre depuis 2010</span>
+        <span class="eyebrow">Artisans depuis 2010</span>
         <h1>Donnez vie à vos murs et à vos sols</h1>
         <p class="lead">
-          Hermelin Jouzeau accompagne particuliers et professionnels pour
-          tous travaux de peinture et de pose de sols. Devis gratuit,
-          finition impeccable, délais respectés.
+          Artisans de père en fils, nous sublimons vos intérieurs avec
+          passion et précision. Excellence française pour votre habitat.
         </p>
         <div class="hero-cta">
-          <a href="/contact" class="btn btn-primary">Demander un devis</a>
-          <a href="/realisations" class="btn btn-outline">Voir nos réalisations</a>
+          <a href="/realisations" class="btn btn-primary">Voir nos réalisations</a>
+          <a href="/contact" class="btn btn-outline">Demander un devis</a>
         </div>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <div class="hero-card">
-          <img src="/assets/logo.jpg" alt="" />
+      <div class="hero-image" aria-hidden="true">
+        <div class="hero-image-inner">
+          <span class="material-symbols-outlined">photo_library</span>
+          <span class="hero-image-label">Photographie d'intérieur à intégrer</span>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Notre savoir-faire -->
   <section class="section section-alt">
     <div class="container">
       <div class="section-title">
-        <span class="eyebrow">Nos prestations</span>
-        <h2>Un savoir-faire complet</h2>
-        <p>De la préparation des supports à la pose finale, nous maîtrisons chaque étape.</p>
+        <span class="eyebrow">Notre Savoir-Faire</span>
+        <h2>L'Art de la Finition</h2>
+        <p>De la préparation des supports à la pose finale, nous maîtrisons chaque étape avec le soin du détail.</p>
       </div>
       <div class="services-grid">
         {services.map((s) => (
           <article class="service-card">
-            <div class="service-icon" aria-hidden="true">{s.icon}</div>
+            <span class="material-symbols-outlined service-icon">{s.icon}</span>
             <h3>{s.title}</h3>
             <p>{s.desc}</p>
             <a href="/services" class="link-more">En savoir plus →</a>
@@ -71,16 +79,19 @@ const advantages = [
     </div>
   </section>
 
+  <!-- Pourquoi nous choisir -->
   <section class="section">
     <div class="container">
       <div class="section-title">
-        <span class="eyebrow">Pourquoi nous choisir</span>
-        <h2>Le sérieux d'une entreprise familiale</h2>
+        <span class="eyebrow">L'excellence au service de votre patrimoine</span>
+        <h2>Pourquoi nous choisir</h2>
       </div>
       <div class="advantages-grid">
         {advantages.map((a) => (
           <div class="advantage">
-            <div class="advantage-icon">{a.icon}</div>
+            <div class="advantage-icon">
+              <span class="material-symbols-outlined">{a.icon}</span>
+            </div>
             <h3>{a.title}</h3>
             <p>{a.desc}</p>
           </div>
@@ -89,31 +100,59 @@ const advantages = [
     </div>
   </section>
 
+  <!-- Testimonials -->
+  <section class="section section-beige">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">Témoignages</span>
+        <h2>Ce que nos clients disent</h2>
+      </div>
+      <div class="testimonials-grid">
+        {testimonials.map((t) => (
+          <figure class="testimonial">
+            <span class="material-symbols-outlined quote-icon">format_quote</span>
+            <blockquote>{t.text}</blockquote>
+            <figcaption>
+              <strong>{t.author}</strong>
+              <span>{t.city}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA banner -->
   <section class="cta-banner">
     <div class="container cta-inner">
-      <div>
-        <h2>Un projet en tête&nbsp;?</h2>
-        <p>Parlons-en. Devis gratuit sous 48h.</p>
+      <h2>Prêt à transformer votre intérieur ?</h2>
+      <p>Contactez-nous aujourd'hui pour une étude gratuite de votre projet et bénéficiez de notre expertise artisanale.</p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-primary">Demander mon devis gratuit</a>
       </div>
-      <a href="/contact" class="btn btn-primary">Nous contacter</a>
     </div>
   </section>
 </Layout>
 
 <style>
+  /* Material Symbols utility */
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    line-height: 1;
+  }
+
+  /* Hero */
   .hero {
     padding: clamp(3rem, 8vw, 6rem) 0;
-    background: linear-gradient(180deg, #fff 0%, var(--color-light) 100%);
+    background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-surface-low) 100%);
   }
   .hero-inner {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1.1fr 1fr;
     gap: 4rem;
     align-items: center;
   }
   .hero-text .lead {
-    font-size: 1.15rem;
-    color: var(--color-text);
     max-width: 520px;
     margin-bottom: 2rem;
   }
@@ -122,24 +161,34 @@ const advantages = [
     gap: 1rem;
     flex-wrap: wrap;
   }
-  .hero-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .hero-card {
-    width: min(360px, 100%);
-    aspect-ratio: 1;
-    background: #fff;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
+  .hero-image {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: 0;
+    overflow: hidden;
+    background: var(--color-accent);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3rem;
   }
-  .hero-card img { width: 100%; height: 100%; object-fit: contain; }
+  .hero-image-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-text-light);
+  }
+  .hero-image-inner .material-symbols-outlined {
+    font-size: 3rem;
+    color: var(--color-primary);
+    opacity: 0.6;
+  }
+  .hero-image-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
 
+  /* Services grid */
   .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -147,27 +196,32 @@ const advantages = [
   }
   .service-card {
     background: #fff;
-    padding: 2rem;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-light);
     transition: all var(--transition);
   }
   .service-card:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--color-primary);
+    box-shadow: var(--shadow-ambient);
+    border-color: var(--color-primary-soft);
   }
   .service-icon {
-    font-size: 2rem;
+    font-size: 2.25rem !important;
+    color: var(--color-primary);
     margin-bottom: 1rem;
+    display: block;
   }
   .link-more {
     display: inline-block;
     margin-top: 0.5rem;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 
+  /* Advantages */
   .advantages-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -175,39 +229,75 @@ const advantages = [
   }
   .advantage { text-align: center; }
   .advantage-icon {
-    width: 60px;
-    height: 60px;
+    width: 64px;
+    height: 64px;
     margin: 0 auto 1rem;
-    background: var(--color-primary);
-    color: #fff;
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 700;
   }
-  .advantage h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
-  .advantage p { color: var(--color-text-light); font-size: 0.95rem; }
+  .advantage-icon .material-symbols-outlined {
+    font-size: 1.75rem !important;
+  }
+  .advantage h3 { font-size: 1.05rem; margin-bottom: 0.25rem; }
+  .advantage p {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin: 0;
+  }
 
-  .cta-banner {
-    background: var(--color-dark);
-    color: #fff;
-    padding: 3rem 0;
-  }
-  .cta-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  /* Testimonials */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    flex-wrap: wrap;
   }
-  .cta-banner h2 { color: #fff; margin-bottom: 0.25rem; }
-  .cta-banner p { color: #cfcfcf; margin: 0; }
+  .testimonial {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius-lg);
+    margin: 0;
+    position: relative;
+    box-shadow: var(--shadow-card);
+  }
+  .quote-icon {
+    font-size: 2.5rem !important;
+    color: var(--color-primary);
+    opacity: 0.3;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .testimonial blockquote {
+    margin: 0 0 1.5rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    font-style: italic;
+  }
+  .testimonial figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    border-top: 1px solid var(--color-border-light);
+    padding-top: 1rem;
+  }
+  .testimonial figcaption strong {
+    color: var(--color-dark);
+    font-weight: 600;
+  }
+  .testimonial figcaption span {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
 
   @media (max-width: 900px) {
-    .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
-    .hero-visual { order: -1; }
-    .hero-card { width: min(280px, 100%); padding: 2rem; }
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .hero-image { max-width: 480px; margin: 0 auto; }
   }
 </style>

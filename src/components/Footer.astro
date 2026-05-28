@@ -4,48 +4,45 @@ const year = new Date().getFullYear();
 
 <footer class="footer">
   <div class="container footer-grid">
-    <div class="footer-col">
+    <div class="footer-col footer-brand-col">
       <div class="footer-brand">
-        <img src="/assets/logo.jpg" alt="Hermelin Jouzeau" width="56" height="56" />
-        <div>
-          <strong>Hermelin Jouzeau</strong>
-          <small>Peinture &amp; Sol</small>
-        </div>
+        <img src="/assets/logo.jpg" alt="Hermelin Jouzeau" width="48" height="48" />
+        <strong>Hermelin Jouzeau</strong>
       </div>
       <p>
-        Artisans peintres et poseurs de sols. Travaux de peinture intérieure
-        et extérieure, pose de parquets, stratifiés et revêtements souples.
+        L'excellence de l'artisanat français au service de votre intérieur
+        depuis plus de 20 ans. Peinture, finition et sols sur-mesure.
       </p>
     </div>
 
     <div class="footer-col">
-      <h4>Navigation</h4>
+      <h4>Services</h4>
       <ul>
-        <li><a href="/">Accueil</a></li>
-        <li><a href="/services">Services</a></li>
+        <li><a href="/services">Peinture intérieure</a></li>
+        <li><a href="/services">Peinture extérieure</a></li>
+        <li><a href="/services">Revêtements de sols</a></li>
+        <li><a href="/services">Conseil en décoration</a></li>
         <li><a href="/realisations">Réalisations</a></li>
-        <li><a href="/a-propos">À propos</a></li>
-        <li><a href="/contact">Contact</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
       <h4>Contact</h4>
       <ul class="contact-list">
-        <li><span aria-hidden="true">📞</span> <a href="tel:+33000000000">À renseigner</a></li>
-        <li><span aria-hidden="true">✉️</span> <a href="mailto:contact@hermelin-peinture.fr">contact@hermelin-peinture.fr</a></li>
-        <li><span aria-hidden="true">📍</span> Adresse à renseigner</li>
-        <li><span aria-hidden="true">🕒</span> Lun – Ven, 8h – 18h</li>
+        <li>1, Rue de l'Artisanat<br />44000 Nantes, France</li>
+        <li><a href="mailto:contact@hermelin-peinture.fr">contact@hermelin-peinture.fr</a></li>
+        <li><a href="tel:+33000000000">02 40 XX XX XX</a></li>
       </ul>
     </div>
   </div>
 
   <div class="footer-bottom">
     <div class="container footer-bottom-inner">
-      <small>© {year} Hermelin Jouzeau Peinture &amp; Sol. Tous droits réservés.</small>
+      <small>© {year} Hermelin Jouzeau — Peinture &amp; Sol. Tous droits réservés.</small>
       <ul class="legal">
         <li><a href="/mentions-legales">Mentions légales</a></li>
-        <li><a href="/confidentialite">Confidentialité</a></li>
+        <li><a href="/confidentialite">RGPD</a></li>
+        <li><a href="/plan-du-site">Plan du site</a></li>
       </ul>
     </div>
   </div>
@@ -55,53 +52,53 @@ const year = new Date().getFullYear();
   .footer {
     background: var(--color-dark);
     color: #cfcfcf;
-    margin-top: 4rem;
+    margin-top: 0;
   }
   .footer h4 {
     color: #fff;
     font-family: var(--font-body);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
   }
-  .footer a { color: #cfcfcf; }
+  .footer a { color: #cfcfcf; transition: color var(--transition); }
   .footer a:hover { color: #fff; }
 
   .footer-grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1.3fr;
     gap: 3rem;
-    padding: 4rem 1.5rem 3rem;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
   }
 
   .footer-brand {
     display: flex;
     align-items: center;
-    gap: 0.85rem;
-    margin-bottom: 1rem;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
   }
   .footer-brand img {
-    width: 56px;
-    height: 56px;
+    width: 48px;
+    height: 48px;
     object-fit: contain;
     background: #fff;
     border-radius: var(--radius-sm);
-    padding: 4px;
+    padding: 3px;
   }
   .footer-brand strong {
-    display: block;
     color: #fff;
     font-family: var(--font-heading);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+    font-weight: 700;
   }
-  .footer-brand small {
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-primary-light);
+  .footer-brand-col p {
+    color: #9c9c9c;
+    line-height: 1.7;
+    max-width: 360px;
   }
-  .footer-col p { color: #9c9c9c; margin-top: 1rem; }
 
   .footer ul {
     list-style: none;
@@ -109,34 +106,47 @@ const year = new Date().getFullYear();
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.75rem;
   }
-  .contact-list li {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
+  .contact-list li { line-height: 1.6; }
 
   .footer-bottom {
     border-top: 1px solid #2c2c2c;
-    background: #111;
   }
   .footer-bottom-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.25rem 1.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+  .footer-bottom small {
+    color: #7a7a7a;
+    font-size: 0.85rem;
   }
   .legal {
     display: flex;
     gap: 1.5rem;
+    flex-direction: row !important;
   }
-  .legal a { font-size: 0.85rem; }
+  .legal a {
+    font-size: 0.85rem;
+    color: #7a7a7a;
+  }
+  .legal a:hover { color: #fff; }
 
   @media (max-width: 768px) {
-    .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem 2rem; }
-    .footer-bottom-inner { flex-direction: column; text-align: center; }
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding-top: 3rem;
+      padding-bottom: 2rem;
+    }
+    .footer-bottom-inner {
+      flex-direction: column;
+      text-align: center;
+    }
   }
 </style>
